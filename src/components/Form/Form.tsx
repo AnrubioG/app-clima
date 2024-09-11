@@ -33,6 +33,7 @@ export function Form({ fetchWeather }: FormProps) {
     }
 
     fetchWeather(search);
+    setAlert("");
   };
 
   return (
@@ -57,7 +58,7 @@ export function Form({ fetchWeather }: FormProps) {
           value={search.country}
           onChange={handleChange}
         >
-          <option value="">--Seleccione un país</option>
+          <option value="">--Seleccione un país--</option>
           {countries.map((countrie) => (
             <option key={countrie.code} value={countrie.code}>
               {countrie.name}

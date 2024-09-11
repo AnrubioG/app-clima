@@ -21,6 +21,10 @@
   color: var(--white);
 }
 
+.field select option {
+  color: black;
+}
+
 .submit {
   background-color: var(--primary);
   border: none;

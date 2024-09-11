@@ -42,17 +42,20 @@ export function useWeather() {
         return;
       }
 
-      const lat = data[0].lat;
-      const lon = data[0].lon;
+      if (data[0]) {
+        setNotFound(false);
+        const lat = data[0].lat;
+        const lon = data[0].lon;
 
-      const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${appId}`;
-      const { data: weatherResult } = await axios(weatherUrl);
-      const result = Weather.safeParse(weatherResult);
+        const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${appId}`;
+        const { data: weatherResult } = await axios(weatherUrl);
+        const result = Weather.safeParse(weatherResult);
 
-      if (result.success) {
-        setWeather(result.data);
-      } else {
-        console.log("respuesta mal formada");
+        if (result.success) {
+          setWeather(result.data);
+        } else {
+          console.log("respuesta mal formada");
+        }
       }
     } catch (error) {
       console.log(error);
